@@ -20,12 +20,12 @@ export const schema = z.object({
         .regex(
             /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,
             "Invalid email address"
-        ),
+        )
 
-    phone: z
-        .string()
-        .trim()
-        .regex(/^[6-9]\d{9}$/, "Invalid phone number"),
+    // phone: z
+    //     .string()
+    //     .trim()
+    //     .regex(/^[6-9]\d{9}$/, "Invalid phone number"),
 });
 
 interface HeroProps {
@@ -164,7 +164,7 @@ const Hero = ({ onSubmitForm, currentRef, scrollToContactForm }: HeroProps) => {
                                     {errors.email && <p style={{ color: "red", fontSize: "12px" }}> {errors.email.message}</p>}
 
                                 </div>
-                                <div className={styles.formGroup}>
+                                {/* <div className={styles.formGroup}>
                                     <label className={styles.label}>
                                         Phone Number
                                     </label>
@@ -181,7 +181,7 @@ const Hero = ({ onSubmitForm, currentRef, scrollToContactForm }: HeroProps) => {
                                     </div>
                                     {errors.phone && <p style={{ color: "red", fontSize: "12px" }}>{errors.phone.message}</p>}
 
-                                </div>
+                                </div> */}
 
                                 <button
                                     type="submit"
