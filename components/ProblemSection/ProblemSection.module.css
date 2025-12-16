@@ -1,0 +1,182 @@
+.section {
+    padding: 4rem 0;
+    background-color: white;
+}
+
+.containerCenter {
+    max-width: 56rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+}
+
+.heading {
+    font-size: 1.875rem;
+    font-family: var(--font-cormorant), serif;
+    font-weight: 700;
+    color: var(--color-sage-800);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    margin-top: 0.5rem;
+}
+
+.headingGold {
+    color: var(--color-gold-500);
+    font-style: italic;
+}
+
+.headingGold span {}
+
+.description {
+    font-size: 1.125rem;
+    color: var(--color-charcoal);
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    font-family: var(--font-lato), sans-serif;
+}
+
+.containerWide {
+    max-width: 72rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+
+.card {
+    background-color: var(--color-cream-50);
+    padding: 1.5rem;
+    border-radius: 0.125rem;
+    transition: transform 0.3s;
+}
+
+.cardBorderSage {
+    border-top: 3px solid var(--color-sage-800);
+}
+
+.cardBorderGold {
+    border-top: 3px solid var(--color-gold-500);
+}
+
+.card:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 10px 40px -10px rgba(44, 95, 88, 0.15);
+}
+
+.iconCircle {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.8rem;
+}
+
+.iconCircleSage {
+    background-color: rgba(44, 95, 88, 0.1);
+    color: var(--color-sage-800);
+}
+
+.iconCircleGold {
+    background-color: rgba(212, 175, 55, 0.1);
+    color: var(--color-gold-500);
+}
+
+.cardTitle {
+    font-size: 1.25rem;
+    font-family: var(--font-cormorant), serif;
+    font-weight: 700;
+    color: var(--color-sage-800);
+    margin-bottom: 0rem;
+    margin-top: 0.5rem;
+}
+
+.cardText {
+    font-size: 0.875rem;
+    color: #4b5563;
+    font-family: var(--font-lato), sans-serif;
+    line-height: 1.6;
+}
+
+.quoteSection {
+    text-align: center;
+    margin-top: 2.5rem;
+}
+
+.quote {
+    font-size: 1.25rem;
+    font-family: var(--font-cormorant), serif;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--color-sage-800);
+}
+
+/* Responsive Styles */
+@media (min-width: 640px) {
+
+    .containerCenter,
+    .containerWide {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .section {
+        padding: 5rem 0;
+    }
+
+    .heading {
+        font-size: 2.25rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .heading {
+        font-size: 2.5rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    .containerCenter,
+    .containerWide {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .section {
+        padding: 6rem 0;
+    }
+
+    .card {
+        padding: 2rem;
+    }
+
+    .heading {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .heading {
+        font-size: 50px;
+        line-height: 1;
+    }
+}

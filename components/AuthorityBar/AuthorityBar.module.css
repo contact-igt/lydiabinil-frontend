@@ -1,0 +1,173 @@
+.container {
+    background-color: var(--color-sage-900);
+    color: var(--color-cream-50);
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--color-sage-800);
+}
+
+.innerContainer {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 180px;
+    text-align: center;
+    padding: 20px 0px;
+}
+
+
+.statItem:not(:last-child) {
+    border-right: none;
+}
+
+.statItem::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: opacity 0.3s;
+}
+
+.statItem:last-child::after {
+    display: none;
+}
+
+.statItem:hover::after,
+.statItem:hover+.statItem::after {
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Top Icon Styles */
+.iconTop {
+    font-size: 2rem;
+    color: var(--color-gold-500);
+    margin-bottom: 0.8rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: inline-block;
+}
+
+
+.statNumber {
+    font-size: 2rem;
+    font-family: var(--font-cormorant), serif;
+    font-weight: 700;
+    color: var(--color-gold-500);
+    margin-bottom: 0.50rem;
+    line-height: 1;
+    display: inline-block;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.statLabel {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.7;
+    font-family: var(--font-lato), sans-serif;
+    transition: opacity 0.3s, letter-spacing 0.3s;
+}
+
+.statItem:hover .statLabel {
+    opacity: 1;
+    letter-spacing: 0.2em;
+    color: var(--color-cream-50);
+}
+
+.statNumberWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.25rem;
+    min-height: 2.5rem;
+}
+
+.methodLogo {
+    height: 48px;
+    width: auto;
+    margin-bottom: 0.5rem;
+    object-fit: contain;
+    transition: transform 0.3s ease, filter 0.3s ease;
+
+}
+
+.statItem:hover .methodLogo {
+    transform: scale(1.1) rotate(2deg);
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
+}
+
+/* Responsive Styles */
+@media (min-width: 640px) {
+    .innerContainer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .statItem::after {
+        display: block;
+    }
+
+    .statItem:last-child::after {
+        display: none;
+    }
+}
+
+
+@media (min-width: 1024px) {
+    .innerContainer {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+
+}
+
+
+
+@media (width < 1400px) {
+    .grid {
+        gap: 100px;
+    }
+
+    .statNumber {
+        font-size: 1.8rem;
+    }
+
+}
+
+
+@media (width < 992px) {
+    .grid {
+        gap: 80px;
+    }
+
+    .statNumber {
+        font-size: 1.5rem;
+    }
+
+}
+
+@media (width < 768px) {
+    .grid {
+        display: block;
+        padding-top: 40px;
+    }
+
+    .statItem {
+        margin-bottom: 40px;
+    }
+
+}

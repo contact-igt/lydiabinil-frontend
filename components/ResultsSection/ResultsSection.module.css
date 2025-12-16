@@ -1,0 +1,134 @@
+.section {
+    padding: 4rem 0;
+    background-color: var(--color-cream-50);
+}
+
+.container {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.header {
+    text-align: center;
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3rem;
+}
+
+.heading {
+    font-size: 1.875rem;
+    color: var(--color-sage-800);
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+}
+
+.divider {
+    height: 0.25rem;
+    width: 5rem;
+    background-color: var(--color-gold-500);
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 9999px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 3rem;
+    row-gap: 1.5rem;
+}
+
+.resultItem {
+    display: flex;
+}
+
+.iconWrapper {
+    flex-shrink: 0;
+    margin-right: 1.5rem;
+}
+
+.iconCircle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 9999px;
+    background-color: white;
+    border: 1px solid var(--color-gold-500);
+    color: var(--color-gold-500);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: all 0.3s;
+}
+
+.resultItem:hover .iconCircle {
+    background-color: var(--color-gold-500);
+    color: white;
+}
+
+.resultContent h4 {
+    font-size: 1.25rem;
+    color: var(--color-sage-800);
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+.resultContent p {
+    color: #4b5563;
+    margin: 0.7rem auto;
+}
+
+/* Responsive Styles */
+@media (min-width: 640px) {
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .section {
+        padding: 5rem 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .heading {
+        font-size: 2.25rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .section {
+        padding: 5rem 0;
+    }
+
+    .header {
+        margin-bottom: 4rem;
+    }
+
+    .grid {
+        row-gap: 2rem;
+    }
+
+    .heading {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .heading {
+        font-size: 3rem;
+    }
+}

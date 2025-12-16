@@ -1,0 +1,241 @@
+.section {
+    padding: 4rem 0;
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.imageContainer {
+    position: relative;
+    order: 2;
+}
+
+.decorCircleTopLeft {
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+    width: 6rem;
+    height: 6rem;
+    background-color: rgba(212, 175, 55, 0.2);
+    border-radius: 9999px;
+    z-index: 0;
+}
+
+.decorCircleBottomRight {
+    position: absolute;
+    bottom: -1rem;
+    right: -1rem;
+    width: 8rem;
+    height: 8rem;
+    border: 2px solid rgba(44, 95, 88, 0.1);
+    border-radius: 9999px;
+    z-index: 0;
+}
+
+.imageWrapper {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 400px;
+    border-radius: 0.125rem;
+    /* box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); */
+    overflow: hidden;
+}
+
+.trustBadge {
+    position: absolute;
+    bottom: 2rem;
+    right: 2.5rem;
+    z-index: 20;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--color-gold-500);
+    max-width: 20rem;
+}
+
+.trustBadgeQuote {
+    color: var(--color-sage-800);
+    font-size: 1.125rem;
+    margin: 0 !important;
+}
+
+.trustBadgeAuthor {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin: 0 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.textContent {
+    order: 1;
+}
+
+.eyebrow {
+    color: var(--color-gold-500);
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.785rem;
+    display: block;
+}
+
+.heading {
+    font-size: 1.875rem;
+    line-height: 0.8 !important;
+    color: var(--color-sage-800);
+}
+
+.subheading {
+    font-size: 1.25rem;
+    color: rgba(44, 95, 88, 0.7);
+    margin-bottom: 1.5rem;
+}
+.imageWrapper img{
+     object-fit: contain;
+    object-position: center;
+    /* object-position: 40% 20%; */
+}
+.paragraph {
+    color: #4b5563;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+}
+
+.credentialsGrid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+}
+
+.credentialItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.credentialItem i {
+    color: var(--color-gold-500);
+    font-size: 1.25rem;
+}
+
+.credentialText {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-sage-800);
+}
+
+/* Responsive Styles */
+@media (min-width: 380px) {
+        .imageWrapper {
+        height: 480px !important;
+    }
+}
+@media (min-width: 480px) {
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .section {
+        padding: 5rem 0;
+    }
+        .imageContainer{
+        width: 500px !important;
+        margin: 0 auto !important;
+    }
+            .imageContainer{
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+    .imageWrapper {
+        height: 600px !important;
+    }
+}
+/* Responsive Styles */
+@media (min-width: 600px) {
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .section {
+        padding: 5rem 0;
+    }
+        .imageContainer{
+        width: 500px !important;
+        margin: 0 auto !important;
+    }
+    .imageWrapper {
+        height: 600px !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .heading {
+        font-size: 2.25rem;
+    }
+    .imageContainer{
+        width: 600px !important;
+        margin: 0 auto !important;
+    }
+    .trustBadge {
+        display: block;
+    }
+        .credentialsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .imageWrapper {
+        height: 700px !important;
+        width: 580px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4rem;
+    }
+    .imageContainer {
+        order: 1;
+    }
+
+    .textContent {
+        order: 2;
+    }
+
+    .section {
+        padding: 5rem 0;
+    }
+
+    .imageWrapper {
+        height: 650px !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .imageWrapper {
+        height:700px !important;
+    }
+}
