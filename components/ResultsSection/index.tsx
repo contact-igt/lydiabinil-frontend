@@ -9,7 +9,7 @@ export default function ResultsSection() {
                     <h2 className={styles.heading} style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>
                         When You Heal From the Root, Everything Aligns.
                     </h2>
-                    <div className={styles.divider}></div>
+                    {/* <div className={styles.divider}></div> */}
                 </div>
 
                 <div className={styles.grid}>

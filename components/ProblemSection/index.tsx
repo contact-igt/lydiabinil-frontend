@@ -9,7 +9,7 @@ export default function ProblemSection() {
                             fontFamily: "var(--font-playfair)",
                             fontWeight: 700,
                         }}>
-                    You&rsquo;ve Carried It All —
+                    You&rsquo;ve Carried It All
                     <br />
                     <span className={styles.headingGold}>
                         Alone, <span>Quietly</span>, and For Too Long.

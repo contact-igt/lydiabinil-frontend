@@ -72,7 +72,7 @@ export default function TestimonialsSection() {
                                     </p>
                                     <div className={styles.authorSection}>
                                         <div className={styles.authorAvatar}>
-                                            <Image src={testimonial?.imgUrl} alt={testimonial?.authorName} fill />
+                                            <Image src={"/assets/avatar.png"} alt={testimonial?.authorName} fill />
                                         </div>
                                         <div className={styles.authorInfo}>
                                             <p className={styles.authorName}>{testimonial?.authorName}</p>

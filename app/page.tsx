@@ -18,20 +18,20 @@ import { useRef, useState } from "react";
 
 export default function Home() {
 
-  const [formData, setFormData] = useState<any>(null);
-  const calendlyRef = useRef<HTMLDivElement | null>(null);
+  // const [formData, setFormData] = useState<any>(null);
+  // const calendlyRef = useRef<HTMLDivElement | null>(null);
   const contactFormRef = useRef<HTMLDivElement | null>(null);
 
 
-  const getFormData = (data: any) => {
-    console.log("Received from Hero:", data);
-    setFormData(data);
+  // const getFormData = (data: any) => {
+  //   console.log("Received from Hero:", data);
+  //   setFormData(data);
 
-    // Scroll to Calendly
-    setTimeout(() => {
-      calendlyRef.current?.scrollIntoView({ behavior: "smooth" });
-    }, 200);
-  };
+  //   // Scroll to Calendly
+  //   setTimeout(() => {
+  //     calendlyRef.current?.scrollIntoView({ behavior: "smooth" });
+  //   }, 200);
+  // };
 
 
   const scrollToContactForm = () => {
@@ -44,17 +44,19 @@ export default function Home() {
       <Preloader />
       <main className="min-h-screen bg-cream-50">
         <Navbar scrollToContactForm={scrollToContactForm} />
-        <Hero onSubmitForm={getFormData} currentRef={contactFormRef} scrollToContactForm={scrollToContactForm} />
+        {/* <Hero onSubmitForm={getFormData} currentRef={contactFormRef} scrollToContactForm={scrollToContactForm} /> */}
+        <Hero />
+
         <AuthorityBar />
+        <GallerySection />
         <ProblemSection />
         <MethodSection />
         <TangibleResultsSection />
         <ResultsSection />
-        <div ref={calendlyRef}>
+        {/* <div ref={calendlyRef}>
           <Calendly formData={formData} />
-        </div>
+        </div> */}
         <ExpertSection />
-        <GallerySection />
         <TestimonialsSection />
         <Footer scrollToContactForm={scrollToContactForm} />
       </main>

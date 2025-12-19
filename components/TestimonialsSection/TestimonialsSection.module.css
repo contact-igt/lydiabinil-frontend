@@ -115,7 +115,7 @@
   position: relative;
   height: 2.5rem;
   width: 2.5rem;
-  background-color: var(--color-gold-500);
+  /* background-color: var(--color-gold-500); */
   border-radius: 9999px;
   display: flex;
   align-items: center;
