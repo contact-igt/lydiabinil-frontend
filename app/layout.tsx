@@ -57,10 +57,10 @@ export default function RootLayout({
       >
         {children}
 
-        <Script
+        {/* <Script
           src="https://assets.calendly.com/assets/external/widget.js"
           strategy="afterInteractive"
-        />
+        /> */}
         <Script dangerouslySetInnerHTML={{
           __html: `(function(c,l,a,r,i,t,y){
                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

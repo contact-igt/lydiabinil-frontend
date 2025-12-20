@@ -7,6 +7,10 @@ interface handleform {
 }
 
 export default function Footer({ scrollToContactForm }: handleform) {
+
+
+
+
     return (
         <>
             <section className={styles.ctaSection} id="contact">
@@ -30,7 +34,11 @@ export default function Footer({ scrollToContactForm }: handleform) {
             <footer className={styles.footer}>
                 <p className={styles.footerText}>
                     &copy; 2025 Lydia Binil. All Rights Reserved.
+                    Powered by Invictus Global Tech
                 </p>
+                <a className={styles.footerText} href="https://www.invictusglobaltech.com/" target="_blank" >
+                    Powered by Invictus Global Tech
+                </a>
             </footer>
         </>
     );

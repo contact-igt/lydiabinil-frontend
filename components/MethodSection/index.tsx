@@ -12,7 +12,7 @@ export default function MethodSection() {
                 <div className={styles.grid}>
                     <div>
                         <h2 className={styles.heading} style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>
-                            The MAP Method™ — Where Science Meets Compassion
+                            The MAP Method™ Where Science Meets Compassion
                         </h2>
                         <p className={styles.description}>
                             Developed from 44+ years of research, we work directly with the{" "}

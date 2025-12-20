@@ -66,9 +66,9 @@ export default function TangibleResultsSection() {
         <div className={styles.container}>
             <div className={styles.header}>
                 <h2 className={styles.heading} style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>
-                   Deep Healing Changes Everything — Without Force.
+                   Deep Healing Changes Everything Without Force.
                 </h2>
-                <div className={styles.divider}></div>
+                {/* <div className={styles.divider}></div> */}
             </div>
 
             <div className={styles.grid}>
