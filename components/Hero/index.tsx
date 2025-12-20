@@ -80,6 +80,7 @@ const Hero = ({ ref }: any) => {
                 params.append(key, value != null ? String(value) : "");
             });
             await handleGoogleSheetForm(params);
+            // window.location.href = "/thank-you";
             router.replace("/thank-you");
             setIsLoading(false);
         } catch (error) {
