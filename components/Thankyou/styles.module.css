@@ -242,8 +242,8 @@
 }
 
 .playButton {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     background: linear-gradient(135deg,
             var(--color-gold-500) 0%,
             #c49f2f 100%);
@@ -267,7 +267,6 @@
     width: 42px;
     height: 42px;
     color: var(--color-sage-900);
-    margin-left: 6px;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
@@ -305,6 +304,10 @@
     }
     .video{
             max-height: 450px;
+    }
+    .playButton{
+        width: 100px;
+        height :100px;
     }
 }
 
