@@ -298,29 +298,29 @@
 }
 
 /* Responsive Styles */
-@media (min-width: 640px) {
-    .container {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-    }
 
-    .buttonGroup {
-        flex-direction: row;
+@media (max-width: 1023px) {
+    .backgroundGraphic {
+        display: none;
     }
-
-    .heading {
-        font-size: 2.5rem !important;
-    }
-    .headingGold{
-        font-size: 38px
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
     .heading {
-        font-size: 3rem;
+        font-size: 70px;
+        line-height: 0.9;
+        margin-bottom: 0px;
+
     }
+
+    .headingGold {
+        color: var(--color-gold-500);
+        font-size: 50px;
+        line-height: 1.1;
+        margin: 20px 0px;
+    }
+
+
 }
 
 @media (min-width: 1024px) {
@@ -345,28 +345,55 @@
     }
 }
 
-@media (min-width: 1200px) {
-    .heading {
-        font-size: 70px;
-        line-height: 0.9;
-        margin-bottom: 0px;
 
+
+@media (min-width: 768px) {
+    .heading {
+        font-size: 3rem;
+    }
+}
+
+
+
+
+
+@media (min-width: 640px) {
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .buttonGroup {
+        flex-direction: row;
+    }
+}
+
+
+@media (width < 576px) {
+
+    .heading {
+        font-size: 2.5rem;
     }
 
     .headingGold {
-        color: var(--color-gold-500);
-        font-size: 50px;
-        line-height: 1.1;
-        margin: 20px 0px;
+        font-size: 38px
     }
 
+    .badge {
 
-}
 
-@media (max-width: 1023px) {
-    .backgroundGraphic {
-        display: none;
+        padding: .4rem .85rem;
+        font-size: .65rem;
+
     }
+
+    .description{
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
 }
 
 /* React DatePicker Custom Styles */
