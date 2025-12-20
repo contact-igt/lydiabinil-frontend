@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import styles from "./Navbar.module.css";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 interface handleform {
     scrollToContactForm: () => void;
@@ -11,7 +12,10 @@ interface handleform {
 
 export default function Navbar({ scrollToContactForm }: handleform) {
     const [isOpen, setIsOpen] = useState(false);
-
+    const pathname = usePathname();
+    const showCTA = pathname !== "/thank-you";
+    const isHome = pathname === "/";
+    const getLink = (hash: string) => (isHome ? hash : `/${hash}`);
     return (
         <nav className={styles.nav}>
             <div className={styles.container}>
@@ -29,42 +33,42 @@ export default function Navbar({ scrollToContactForm }: handleform) {
                     {/* Desktop Menu */}
                     <div className={styles.desktopMenu}>
                         <Link
-                            href="#"
+                            href={getLink("#")}
                             className={styles.navLink}
                         >
                             Home
                         </Link>
                         <Link
-                            href="#problem"
+                            href={getLink("#problem")}
                             className={styles.navLink}
                         >
                             The Journey
                         </Link>
                         <Link
-                            href="#method"
+                            href={getLink("#method")}
                             className={styles.navLink}
                         >
                             The Method
                         </Link>
                         <Link
-                            href="#innerpeace"
+                            href={getLink("#innerpeace")}
                             className={styles.navLink}
                         >
                             Inner Peace
                         </Link>
                         <Link
-                            href="#results"
+                            href={getLink("#results")}
                             className={styles.navLink}
                         >
                             Results
                         </Link>
-                        <Link
-                            href="#"
+                        {showCTA && <Link
+                             href={getLink("#")}
                             className={styles.ctaButton}
                             onClick={scrollToContactForm}
                         >
                             Book Diagnostic Call
-                        </Link>
+                        </Link>}
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -85,47 +89,47 @@ export default function Navbar({ scrollToContactForm }: handleform) {
                 >
                     <div className={styles.mobileMenuContent}>
                         <Link
-                            href="#"
+                           href={getLink("#")}
                             className={styles.mobileNavLink}
                             onClick={() => setIsOpen(false)}
                         >
                             Home
                         </Link>
                         <Link
-                            href="#problem"
+                            href={getLink("#problem")}
                             className={styles.mobileNavLink}
                             onClick={() => setIsOpen(false)}
                         >
                             The Journey
                         </Link>
                         <Link
-                            href="#method"
+                            href={getLink("#method")}
                             className={styles.mobileNavLink}
                             onClick={() => setIsOpen(false)}
                         >
                             The Method
                         </Link>
                         <Link
-                            href="#innerpeace"
+                            href={getLink("#innerpeace")}
                             className={styles.mobileNavLink}
                             onClick={() => setIsOpen(false)}
                         >
                             Inner Peace
                         </Link>
                         <Link
-                            href="#results"
+                            href={getLink("#results")}
                             className={styles.mobileNavLink}
                             onClick={() => setIsOpen(false)}
                         >
                             Results
                         </Link>
-                        <Link
+                        {showCTA && <Link
                             href="#"
                             className={styles.mobileCtaButton}
                             onClick={() => { scrollToContactForm(); setIsOpen(false) }}
                         >
                             Book Call
-                        </Link>
+                        </Link>}
                     </div>
                 </div>
             )}

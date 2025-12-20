@@ -1,6 +1,4 @@
 "use client";
-
-
 import Navbar from "@/components/Navbar";
 import AuthorityBar from "@/components/AuthorityBar";
 import ProblemSection from "@/components/ProblemSection";
@@ -45,7 +43,7 @@ export default function Home() {
       <main className="min-h-screen bg-cream-50">
         <Navbar scrollToContactForm={scrollToContactForm} />
         {/* <Hero onSubmitForm={getFormData} currentRef={contactFormRef} scrollToContactForm={scrollToContactForm} /> */}
-        <Hero />
+        <Hero ref={contactFormRef} />
 
         <AuthorityBar />
         <GallerySection />

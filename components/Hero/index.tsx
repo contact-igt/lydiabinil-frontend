@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useRouter } from "next/navigation";
 
 export const schema = z.object({
     name: z
@@ -33,8 +34,9 @@ export const schema = z.object({
 
 
 
-const Hero = () => {
-    // const [isformsubmit, setisformsubmit] = useState<boolean>(false);
+const Hero = ({ ref }: any) => {
+    const router = useRouter();
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const today = new Date();
     const twoweeklate = new Date();
@@ -43,7 +45,7 @@ const Hero = () => {
     const {
         register,
         handleSubmit,
-        control, // ✅ added
+        control,
         formState: { errors },
     } = useForm({
         resolver: zodResolver(schema),
@@ -53,10 +55,73 @@ const Hero = () => {
         },
     });
 
-    const onSubmit = (data: any) => {
-        console.log("Form Data:", data);
-        // setisformsubmit(true);
-        // onSubmitForm(data);
+    const onSubmit = async (data: any) => {
+        try {
+            setIsLoading(true);
+            const ipResponse = await fetch("https://api.ipify.org?format=json");
+            const ipData = await ipResponse.json();
+            const formData = {
+                name: data?.name,
+                email: data?.email,
+                phone: `+91${data?.phone}`,
+                date: data?.date,
+                time: data?.time,
+                ip_address: ipData.ip,
+                utm_source: localStorage.getItem("utm_source"),
+                utm_medium: localStorage.getItem("utm_medium"),
+                utm_campaign: localStorage.getItem("utm_campaign"),
+                utm_term: localStorage.getItem("utm_term"),
+                utm_content: localStorage.getItem("utm_content"),
+            };
+            const params = new URLSearchParams();
+
+            (Object.keys(formData) as Array<keyof typeof formData>).forEach((key) => {
+                const value = formData[key];
+                params.append(key, value != null ? String(value) : "");
+            });
+            await handleGoogleSheetForm(params);
+            router.replace("/thank-you");
+            setIsLoading(false);
+        } catch (error) {
+            console.error("Error submitting form:", error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const handleGoogleSheetForm = async (formData: any, retries = 3, delay = 1500) => {
+        try {
+            const res = await fetch(
+                "https://script.google.com/macros/s/AKfycbw5Q2G9riQyBETv93wS2ZBFj-e8DlqHakK6z__6o_ZHWzAw3YvWhYUyD1NvZOeddvnB/exec",
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: formData.toString(),
+                }
+            );
+            console.log(res);
+            const text = await res.text();
+            console.log("Google Sheet Response:", text);
+
+            if (res.ok) {
+                return true;
+            } else {
+                throw new Error("Sheet responded with non-OK");
+            }
+        } catch (err) {
+            console.error(
+                `Google Sheet attempt failed. Retries left: ${retries}`,
+                err
+            );
+
+            if (retries <= 1) {
+                console.error("Google Sheet failed permanently!");
+                return false;
+            }
+
+            await new Promise((resolve) => setTimeout(resolve, delay));
+            return handleGoogleSheetForm(formData, retries - 1, delay);
+        }
     };
 
     return (
@@ -122,7 +187,7 @@ const Hero = () => {
                     >
                         {/* Decorative background element */}
                         <div className={styles.formDecoration}></div>
-                        <div className={styles.formContainer}>
+                        <div ref={ref} className={styles.formContainer}>
                             <form
                                 className={styles.form}
                                 suppressHydrationWarning
@@ -138,7 +203,7 @@ const Hero = () => {
                                             className={styles.input}
                                             placeholder="Your Name"
                                             {...register("name")}
-                                            // disabled={isformsubmit}
+                                            disabled={isLoading}
                                         />
                                     </div>
                                     {errors.name && (
@@ -158,7 +223,7 @@ const Hero = () => {
                                             className={styles.input}
                                             placeholder="email@address.com"
                                             {...register("email")}
-                                            // disabled={isformsubmit}
+                                            disabled={isLoading}
                                         />
                                     </div>
                                     {errors.email && (
@@ -178,7 +243,7 @@ const Hero = () => {
                                             className={styles.input}
                                             placeholder="+91 XXXXX XXXXX"
                                             {...register("phone")}
-                                            // disabled={isformsubmit}
+                                            disabled={isLoading}
                                         />
                                     </div>
                                     {errors.phone && (
@@ -188,7 +253,6 @@ const Hero = () => {
                                     )}
                                 </div>
 
-                                {/* ✅ DATE PICKER (FIXED ONLY) */}
                                 <div className={styles.formGroup}>
                                     <label className={styles.label}>Select date</label>
 
@@ -201,7 +265,7 @@ const Hero = () => {
                                                 onChange={(date: Date | null) =>
                                                     field.onChange(
                                                         date
-                                                            ? date.toISOString().split("T")[0]
+                                                            ? `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`
                                                             : ""
                                                     )
                                                 }
@@ -210,7 +274,7 @@ const Hero = () => {
                                                 placeholderText="Select a date"
                                                 dateFormat="MM/dd/yyyy"
                                                 className={styles.input2}
-                                                // disabled={isformsubmit}
+                                                disabled={isLoading}
                                             />
                                         )}
                                     />
@@ -228,7 +292,7 @@ const Hero = () => {
                                     <select
                                         className={styles.input2}
                                         {...register("time")}
-                                        // disabled={isformsubmit}
+                                        disabled={isLoading}
                                     >
                                         <option value="">Select time</option>
                                         <option value="10.00 AM - 12.00 PM">
@@ -252,8 +316,8 @@ const Hero = () => {
                                     )}
                                 </div>
 
-                                <button type="submit" className={styles.submitButton}>
-                                    Secure My Spot <i className="fas fa-arrow-right"></i>
+                                <button disabled={isLoading} type="submit" className={styles.submitButton}>
+                                    {isLoading ? "Submitting..." : "Secure My Spot"} <i className="fas fa-arrow-right"></i>
                                 </button>
                             </form>
                         </div>
