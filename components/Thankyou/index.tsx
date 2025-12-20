@@ -1,19 +1,41 @@
+
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styles from "./styles.module.css";
 
 export default function ThankYouPage() {
     const [mounted, setMounted] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
         setMounted(true);
     }, []);
 
+    const handlePlayClick = () => {
+        if (videoRef.current) {
+            videoRef.current.play();
+            setIsPlaying(true);
+        }
+    };
+
+    const handleVideoClick = () => {
+        if (videoRef.current) {
+            if (isPlaying) {
+                videoRef.current.pause();
+                setIsPlaying(false);
+            } else {
+                videoRef.current.play();
+                setIsPlaying(true);
+            }
+        }
+    };
+
     return (
         <main className={styles.container}>
-            <div className={`${styles.content} ${mounted ? styles.visible : ''}`}>
+            <div className={`${styles.content} ${mounted ? styles.visible : ''} `}>
                 <div className={styles.iconWrapper}>
                     <div className={styles.iconCircle}>
                         <svg
@@ -42,12 +64,36 @@ export default function ThankYouPage() {
                 <p className={styles.subheading}>
                     Your message has been received.
                 </p>
-
                 {/* Description */}
                 <p className={styles.description}>
                     We appreciate you reaching out. Lydia will review your message and get back to you within 24-48 hours.
                 </p>
 
+                {/* Enhanced Video Section */}
+                <div className={styles.videoWrapper}>
+                    <video
+                        ref={videoRef}
+                        src="/assets/thankyou_video.mp4"
+                        className={styles.video}
+                        loop
+                        playsInline
+                        onClick={handleVideoClick}
+                    />
+                    {!isPlaying && (
+                        <div className={styles.playButtonOverlay} onClick={handlePlayClick}>
+                            <div className={styles.playButton}>
+                                <svg
+                                    className={styles.playIcon}
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </div>
+                            <p className={styles.playText}>Click to play</p>
+                        </div>
+                    )}
+                </div>
                 {/* Decorative Divider */}
                 <div className={styles.divider}>
                     <div className={styles.dividerLine}></div>
@@ -62,6 +108,15 @@ export default function ThankYouPage() {
                 {/* Call to Action Buttons */}
                 <div className={styles.buttonGroup}>
                     <Link href="/" className={styles.primaryButton}>
+                        <svg
+                            className={styles.arrowIconLeft}
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                        >
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
                         Return to Home
                     </Link>
 
