@@ -140,7 +140,7 @@ const Hero = ({ ref }: any) => {
                     >
                         <span className={styles.badge}>
                             {/* Welcome to your Sanctuary */}
-                            Instead of welcome to sanctuary replace it with Begin your trauma to triumph Journey
+                            Begin your trauma to triumph Journey
                         </span>
 
                         <h1 className={styles.heading} style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}>
