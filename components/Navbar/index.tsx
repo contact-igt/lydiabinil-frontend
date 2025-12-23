@@ -22,7 +22,7 @@ export default function Navbar({ scrollToContactForm }: handleform) {
                 <div className={styles.navContent}>
                     {/* Logo */}
                     <Link
-                        href="#"
+                        href="/"
                         className={styles.logo}
                         style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700 }}
                     >

@@ -13,23 +13,14 @@ import Preloader from "@/components/Preloader";
 import Calendly from "@/components/Calendly";
 import Hero from "@/components/Hero";
 import { useRef, useState } from "react";
+import { ClientOnly } from "@/components/ClientOnlyWrapper";
+
+
+
 
 export default function Home() {
 
-  // const [formData, setFormData] = useState<any>(null);
-  // const calendlyRef = useRef<HTMLDivElement | null>(null);
   const contactFormRef = useRef<HTMLDivElement | null>(null);
-
-
-  // const getFormData = (data: any) => {
-  //   console.log("Received from Hero:", data);
-  //   setFormData(data);
-
-  //   // Scroll to Calendly
-  //   setTimeout(() => {
-  //     calendlyRef.current?.scrollIntoView({ behavior: "smooth" });
-  //   }, 200);
-  // };
 
 
   const scrollToContactForm = () => {
@@ -42,8 +33,11 @@ export default function Home() {
       <Preloader />
       <main className="min-h-screen bg-cream-50">
         <Navbar scrollToContactForm={scrollToContactForm} />
-        {/* <Hero onSubmitForm={getFormData} currentRef={contactFormRef} scrollToContactForm={scrollToContactForm} /> */}
-        <Hero ref={contactFormRef} />
+
+        <ClientOnly>
+          <Hero ref={contactFormRef} />
+
+        </ClientOnly>
 
         <AuthorityBar />
         <GallerySection />
