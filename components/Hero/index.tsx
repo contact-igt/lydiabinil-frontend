@@ -46,6 +46,7 @@ const Hero = ({ ref }: any) => {
         register,
         handleSubmit,
         control,
+        reset,
         formState: { errors },
     } = useForm({
         resolver: zodResolver(schema),
@@ -56,17 +57,27 @@ const Hero = ({ ref }: any) => {
     });
 
     const onSubmit = async (data: any) => {
+
+
         try {
             setIsLoading(true);
-            const ipResponse = await fetch("https://api.ipify.org?format=json");
-            const ipData = await ipResponse.json();
+            let ip = "";
+            try {
+                const ipResponse = await fetch("https://api.ipify.org?format=json");
+                const ipData = await ipResponse.json();
+                ip = ipData.ip;
+            } catch {
+                ip = "";
+            }
+            // const ipResponse = await fetch("https://api.ipify.org?format=json");
+            // const ipData = await ipResponse.json();
             const formData = {
                 name: data?.name,
                 email: data?.email,
                 phone: `+91${data?.phone}`,
                 date: data?.date,
                 time: data?.time,
-                ip_address: ipData.ip,
+                ip_address: ip,
                 utm_source: localStorage.getItem("utm_source"),
                 utm_medium: localStorage.getItem("utm_medium"),
                 utm_campaign: localStorage.getItem("utm_campaign"),
@@ -80,20 +91,28 @@ const Hero = ({ ref }: any) => {
                 params.append(key, value != null ? String(value) : "");
             });
             await handleGoogleSheetForm(params);
-            // window.location.href = "/thank-you";
-            router.replace("/thank-you");
+            reset();
+
+            window.location.href = "/thank-you";
+            // router.replace("/thank-you");
+
             setIsLoading(false);
+
         } catch (error) {
             console.error("Error submitting form:", error);
+            reset();
+
         } finally {
             setIsLoading(false);
+            reset();
+
         }
     };
 
     const handleGoogleSheetForm = async (formData: any, retries = 3, delay = 1500) => {
         try {
             const res = await fetch(
-                "https://script.google.com/macros/s/AKfycbw5Q2G9riQyBETv93wS2ZBFj-e8DlqHakK6z__6o_ZHWzAw3YvWhYUyD1NvZOeddvnB/exec",
+                "https://script.google.com/macros/s/AKfycbzxZfjHFmouj_VzQQ7zaZ_02IwmNRDjx1YvoIcBzXGx2zJOdxtaMMiETuqyKWSsawgg/exec",
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -318,7 +337,14 @@ const Hero = ({ ref }: any) => {
                                 </div>
 
                                 <button disabled={isLoading} type="submit" className={styles.submitButton}>
-                                    {isLoading ? "Submitting..." : "Secure My Spot"} <i className="fas fa-arrow-right"></i>
+                                    {/* {isLoading ? "Submitting..." : "Secure My Spot"} <i className="fas fa-arrow-right"></i> */}
+
+
+                                    {
+                                        isLoading ? (<div className={styles.loader}></div>) : (<>
+                                            Secure My spot <i className="fas fa-arrow-right"></i>
+                                        </>)
+                                    }
                                 </button>
                             </form>
                         </div>
